@@ -18,3 +18,8 @@ Er zijn verschillende aspecten aan: enerzijds de constructie van de robot en and
 
 ...verzamelen we alle bestanden, documenten, tekeningen, ontwerpen die we maken om de E-Liner te ontwerpen, alsook de software die we er op zetten om hem te laten rijden en te programmeren.
 
+## Design
+
+![Design](assets/design.png)
+
+![Design](assets/cut.png)
