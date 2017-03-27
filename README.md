@@ -23,3 +23,13 @@ Er zijn verschillende aspecten aan: enerzijds de constructie van de robot en and
 ![Design](assets/design.png)
 
 ![Design](assets/cut.png)
+
+## Onderdelen
+
+* 1 x [Gravity Keypad](https://iprototype.nl/products/components/buttons-switches/gravity-keypad) (~&euro;8)
+* 1 x set [DC motoren en wielen](https://iprototype.nl/products/robotics/servo-motors/motors-wheels) (~&euro;18)
+* 1 x [Ball caster](https://iprototype.nl/products/robotics/misc/ball-caster-30mm) (~&euro;2,30)
+* 1 x set [Encoders voor DC motor](https://iprototype.nl/products/robotics/misc/dc-motor-encoder) (~&euro;15,50)
+* 1 x [Batterijbox 4xAA](https://iprototype.nl/products/accessoires/power/battery-box-4xAA) (~&euro;4,75)
+
+Wordt vervolgd...
