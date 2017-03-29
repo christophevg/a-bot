@@ -13,12 +13,36 @@ module t(dikte=1) {
 
 // t();
 
+// TODO: plaats motor in XY vlak met assen in Z vlak, zodat snijdingen zonder
+//       rotaties mogelijk zijn.
+
 module motor() {
+  // motorblok
   translate([0, -motor_as_afstand_rand, -motor_as_afstand_rand]) {
     cube([motor_breedte, motor_lengte, motor_hoogte]);
   }
+  // as
   translate([-(motor_as_lengte - motor_breedte)/2, 0, 0]) {
     rotate([0,90,0]) { cylinder(motor_as_lengte, d=motor_as_diameter); }
+  }
+  // gaten (voorgesteld als staven/vijzen)
+  translate([
+    0,
+    -motor_as_afstand_rand+motor_gat_diameter/2+motor_gat_afstand_voorkant,
+    -motor_as_afstand_rand+motor_gat_diameter/2+motor_gat_afstand_zijkant,
+  ]) {
+    rotate([0,90,0]) { cylinder(motor_breedte+10, d=motor_gat_diameter); }
+  }
+  translate([
+    0,
+    -motor_as_afstand_rand+motor_gat_diameter/2+motor_gat_afstand_voorkant,
+    +motor_as_afstand_rand-motor_gat_diameter/2-motor_gat_afstand_zijkant,
+  ]) {
+    rotate([0,90,0]) { cylinder(motor_breedte+10, d=motor_gat_diameter); }
+  }
+  // gat voor "uitstulping"
+  translate([ 0, motor_uitstulping_afstand_as, 0 ]) {
+    rotate([0,90,0]) { cylinder(motor_breedte+10, d=motor_uitstulping_diameter); }
   }
 }
 
@@ -31,6 +55,8 @@ module motor_met_wiel() {
   translate([-wiel_as_breedte,0,0]) { rotate([0, 90, 0]) { wiel(); } }
   motor();
 }
+
+// motor_met_wiel();
 
 // door de afronding, wordt het chassis groter. deze hulp-variabelen zijn de 
 // netto waarden.
@@ -57,29 +83,28 @@ module motor_steun() {
 
   difference() {
     union() {
-      cube([motor_lengte, motor_hoogte, chassis_dikte]);
+      translate([-motor_lengte/6*2,0,0]) {
+        cube([motor_lengte+motor_lengte/6*2, motor_hoogte, chassis_dikte]);
+      }
       // vleugels bovenkant
-      translate([ motor_lengte/6*1.5,  motor_hoogte,  0 ]) { vleugel(); }
-      translate([ motor_lengte/6*3.5,  motor_hoogte,  0 ]) { vleugel(); }
+      translate([ motor_lengte/6*-1.5,  motor_hoogte,  0 ]) { vleugel(); }
+      translate([ motor_lengte/6*0.5,  motor_hoogte,  0 ]) { vleugel(); }
+      translate([ motor_lengte/6*2.4,  motor_hoogte,  0 ]) { vleugel(); }
       // vleugels onderkant
       translate([ motor_lengte/6*0.5, -chassis_dikte, 0 ]) { vleugel(); }
-      translate([ motor_lengte/6*2.5, -chassis_dikte, 0 ]) { vleugel(); }
+      translate([ motor_lengte/6*2.4, -chassis_dikte, 0 ]) { vleugel(); }
       translate([ motor_lengte/6*4.5, -chassis_dikte, 0 ]) { vleugel(); }
     }
     // t-verbindingen bovenkant
-    translate([motor_lengte/6*3, motor_hoogte, 0]) {
-      mirror([0,1,0]) { t(chassis_dikte); }
-    }
     translate([motor_lengte/6*5, motor_hoogte, 0]) {
       mirror([0,1,0]) { t(chassis_dikte); }
     }
     // // t-verbindingen onderkant
-    translate([motor_lengte/6*2, 0, 0]) {
+    translate([motor_lengte/6*-1, 0, 0]) {
       t(chassis_dikte);
     }
-    translate([motor_lengte/6*4, 0, 0]) {
-      t(chassis_dikte);
-    }
+
+    translate([motor_as_afstand_rand,motor_as_afstand_rand,-motor_breedte]) { rotate([0,-90,-90]) { motor(); } }
   }
 }
 
@@ -96,11 +121,12 @@ module motor_steun_vleugels() {
   module vleugel() { cube([chassis_dikte, motor_lengte/6, chassis_dikte]); }
 
   // vleugels bovenkant
-  translate([0, motor_lengte/6*1.5, motor_hoogte])   { vleugel(); }
-  translate([0, motor_lengte/6*3.5, motor_hoogte])   { vleugel(); }
+  translate([0, motor_lengte/6*-1.5, motor_hoogte])  { vleugel(); }
+  translate([0, motor_lengte/6*0.5,  motor_hoogte])  { vleugel(); }
+  translate([0, motor_lengte/6*2.4,  motor_hoogte])  { vleugel(); }
   // vleugels onderkant
   translate([0, motor_lengte/6*0.5, -chassis_dikte]) { vleugel(); }
-  translate([0, motor_lengte/6*2.5, -chassis_dikte]) { vleugel(); }
+  translate([0, motor_lengte/6*2.4, -chassis_dikte]) { vleugel(); }
   translate([0, motor_lengte/6*4.5, -chassis_dikte]) { vleugel(); }
   
   module vijs() { cylinder(d=vijs_diameter, h=vijs_lengte); }
@@ -108,14 +134,12 @@ module motor_steun_vleugels() {
   // vijzen
   translate([chassis_dikte/2, 0, 0]) {        // midden dikte steun
     // boven
-    translate([0, 0, motor_hoogte+chassis_dikte-vijs_lengte]) {       // door plaat
-      translate([0, motor_lengte/6*3, 0]) { vijs(); }
+    translate([0, 0, motor_hoogte+chassis_dikte-vijs_lengte]) {  // door plaat
       translate([0, motor_lengte/6*5, 0]) { vijs(); }
     }
     // onder
     translate([0, 0, -chassis_dikte]) {       // door plaat
-      translate([0, motor_lengte/6*2, 0]) { vijs(); }
-      translate([0, motor_lengte/6*4, 0]) { vijs(); }
+      translate([0, motor_lengte/6*-1, 0]) { vijs(); }
     }
   }
 }

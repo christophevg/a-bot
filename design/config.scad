@@ -19,6 +19,13 @@ motor_as_diameter = 5.3;
 
 motor_as_afstand_rand = motor_hoogte / 2;
 
+motor_gat_afstand_voorkant = 30;
+motor_gat_afstand_zijkant  = 0.75;
+motor_gat_diameter         = 3.1;
+
+motor_uitstulping_diameter   = 4;
+motor_uitstulping_afstand_as = 11.275;
+
 wiel_breedte      = 26;
 wiel_diameter     = 70;
 wiel_as_breedte   = 30;
@@ -28,7 +35,7 @@ wiel_as_diameter  = 14;
 
 chassis_lengte    = 170;
 chassis_breedte   = 150;
-chassis_dikte     = 5;
+chassis_dikte     = 4;
 chassis_afronding = 5;
 
 wiel_uitsparing   = wiel_diameter + chassis_afronding * 2 + 10;
