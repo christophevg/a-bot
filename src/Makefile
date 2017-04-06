@@ -1,11 +1,13 @@
-PROJECT  ?= blink
-PARTICLE ?= particle
-TTY      ?= /dev/tty.usbmodemFD121
-BAUDRATE ?= 9600
-SCREEN   ?= screen $(TTY) $(BAUDRATE)
-
 -include Makefile.local
 -include $(PROJECT)/Makefile
+
+PROJECT  ?= blink
+
+TTY      ?= /dev/tty.usbmodemFD121
+BAUDRATE ?= 9600
+
+PARTICLE ?= particle
+SCREEN   ?= screen $(TTY) $(BAUDRATE)
 
 ifndef ID
 $(error "Definieer ID met de identificatie van je Photon!")
