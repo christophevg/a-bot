@@ -5,8 +5,8 @@
 #define MOTOR1_1A    A0      // dit controleert de draairichting
 #define MOTOR1_2A    A1      // dit controleert de draairichting
 
-#define MIN_SNELHEID   120      // dit is de minimale snelheid
-#define MAX_SNELHEID   255      // dit is de maximale snelheid
+#define MIN_SNELHEID   200      // dit is de minimale snelheid = ~3V (van 5V)
+#define MAX_SNELHEID   255      // dit is de maximale snelheid = ~3.5V (van 5V)
 
 void setup() {
   Serial.begin(9600);
@@ -14,8 +14,6 @@ void setup() {
   pinMode(MOTOR1_1A, OUTPUT);
   pinMode(MOTOR1_2A, OUTPUT);
 }
-
-#define SNELHEID 90
 
 void motor_update(int16_t snelheid) {
   Serial.println(snelheid);
@@ -44,15 +42,13 @@ void motor_update(int16_t snelheid) {
 }
 
 void loop() {
-  // voorwaarts
-  for(int16_t snelheid=60; snelheid<300; snelheid+=20) {
-    motor_update(snelheid);
-    delay(1000);
-  }
+  motor_update(MAX_SNELHEID);
+  delay(2000);
+  motor_update(0);
+  delay(2000);
 
-  // achterwaarts
-  for(int16_t snelheid=-60; snelheid>-300; snelheid-=20) {
-    motor_update(snelheid);
-    delay(1000);
-  }
+  motor_update(MIN_SNELHEID);
+  delay(2000);
+  motor_update(0);
+  delay(2000);
 }
