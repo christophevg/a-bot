@@ -2,6 +2,8 @@
 Een eigen kleine programmeerbare zelf-rijdende robot maken
 [http://knutselbaar.be/projecten/A-Bot](http://knutselbaar.be/projecten/A-Bot)
 
+![A-Bot](assets/a-bot.jpeg)
+
 ## Inleiding
 
 Tijdens een bezoek aan [Technolopis](http://technopolis.be) ontdekte onze zoon Arjen, 5 jaar, de [Bee Bot](https://www.bee-bot.us). Een zeer eenvoudige, programmeerbare, zelf-rijdende robot.
