@@ -1,20 +1,18 @@
 # A-Bot
 
-Deze applicatie brengt alle onderdelen samen.
+Deze applicatie brengt alle onderdelen van de A-Bot samen tot een programmeerbaar robotje.
 
 ![A-Bot](../../assets/a-bot.jpeg)
 
 ## Wat moet je bouwen?
 
-![A-Bot PCB](a-bot_pcb.png)
-
-_uitleg volgt weldra ;-)_
+Als we nu 2 [motoren](../motor/), 2 [encoders](../encoder/) en 1 [keypad](../keypad/) samenbrengen en zelf eventueel een _gaatjesprint_ maken, bekom je de volledige electronica die je nodig hebt:
 
 ![A-Bot PCB](pcb.jpeg)
 
-## Hoe werkt dit?
+![A-Bot PCB](a-bot_pcb.png)
 
-_uitleg volgt weldra ;-)_
+Als je andere pinnen van de Photon gebruikt, kan je dit in [`config.h`](config.h) configureren.
 
 ## Hoe doe je dit werken op de Photon?
 
@@ -32,5 +30,3 @@ Flash device OK:  Update started
 *** Start van console uitvoer. Beëindig met 'Ctrl+a k y'.
     Druk op een toets om verder te gaan...
 ```
-
-_uitleg volgt weldra ;-)_

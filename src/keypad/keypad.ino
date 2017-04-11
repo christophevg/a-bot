@@ -1,3 +1,6 @@
+// deze app leest de knoppen uit en toont de ingedrukte knop op de console
+// auteur: Christophe VG <contact@christophe.vg>
+
 #define KNOPPEN A4
 
 void setup() {
@@ -18,11 +21,8 @@ void loop() {
   delay(100);
 }
 
-// s1    s2     s3      s4     s5
-//   600    650    700     800    900
 uint8_t lees_knoppen() {
   int invoer = 4095 - analogRead(KNOPPEN);
-  // Serial.println(invoer);
   if(invoer < 200) { return 0; }
   if(invoer < 300) { return 5; }
   if(invoer < 500) { return 4; }

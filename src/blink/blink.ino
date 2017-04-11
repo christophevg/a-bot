@@ -1,6 +1,6 @@
 // de eenvoudigste test om te controleren dat alles werkt
 // dit laat de ingebouwde blauwe LED van de Photon blinken
-// author: Christophe VG <contact@christophe.vg>
+// auteur: Christophe VG <contact@christophe.vg>
 
 #define LED    D7      // dit is de standaard led die op pin D7 verbonden is
 

@@ -1,5 +1,5 @@
 // dit is de applicatie voor de (hele) A-Bot
-// author: Christophe VG <contact@christophe.vg>
+// auteur: Christophe VG <contact@christophe.vg>
 
 #include "config.h"
 

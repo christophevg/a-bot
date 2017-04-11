@@ -1,5 +1,5 @@
 // deze app laat een motor draaien en telt via de encoder de stappen
-// author: Christophe VG <contact@christophe.vg>
+// auteur: Christophe VG <contact@christophe.vg>
 
 #define MOTOR1_EN    D0      // dit controleert of de motor in gebruik is
 #define MOTOR1_1A    A0      // dit controleert de draairichting
