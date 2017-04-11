@@ -172,6 +172,7 @@ void loop_rijden() {
       rijden = false;
     }
     vorige_knop = knop;
+    return;
   }
 
   // rijden tot doel bereikt is
