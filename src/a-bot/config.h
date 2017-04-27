@@ -29,4 +29,7 @@ typedef struct {
 // keypad
 #define KNOPPEN       A5
 
+// offline support
+#define CONNECT       D4
+
 #endif

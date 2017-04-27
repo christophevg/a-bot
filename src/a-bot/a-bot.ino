@@ -3,6 +3,8 @@
 
 #include "config.h"
 
+SYSTEM_MODE(SEMI_AUTOMATIC);
+
 void setup() {
   Serial.begin(9600);
 
@@ -18,6 +20,25 @@ void setup() {
   // encoders 1 & 2
   attachInterrupt(ENCODER1, encoder1_verandering, CHANGE);
   attachInterrupt(ENCODER2, encoder2_verandering, CHANGE);
+
+  // offline supprt
+  pinMode(CONNECT, INPUT_PULLDOWN);
+  
+  // connect?
+  if( digitalRead(CONNECT) == HIGH ) {
+    connect();
+  } else {
+    attachInterrupt(CONNECT, connect, RISING);
+  }
+}
+
+// connect, when not yet connected
+void connect() {
+  detachInterrupt(CONNECT);
+  if(Particle.connected() == false) {
+    Serial.println("connecting...");
+    Particle.connect();
+  }
 }
 
 void motor_update(motor_t motor, int16_t snelheid) {
